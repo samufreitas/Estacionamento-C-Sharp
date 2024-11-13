@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("estacionamentoApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dc20eb519215825fa3e59cbd47291267c253e84")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5dc44b3ee99fd2b9becfd8fcbcba11d1d46cd4f")]
 [assembly: System.Reflection.AssemblyProductAttribute("estacionamentoApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("estacionamentoApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

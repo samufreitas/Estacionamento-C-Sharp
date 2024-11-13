@@ -20,5 +20,7 @@ namespace estacionamentoApp.Models
         [Required(ErrorMessage = "Informe o CPF/CNPJ do cliente")]
         [Column(TypeName = "VARCHAR(255)")]
         public required string Cpf_Cnpj { get; set; }
+
+        public required bool Ativo { get; set; } = true;
     }
 }

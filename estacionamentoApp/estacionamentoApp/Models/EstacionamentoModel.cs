@@ -14,5 +14,7 @@ namespace estacionamentoApp.Models
         [Required(ErrorMessage = "Informe qual filial que o estacionamento pertence!")]
         public required FilialModel Filial { get; set; }
 
+        public bool Ativo { get; set; } = true;
+
     }
 }

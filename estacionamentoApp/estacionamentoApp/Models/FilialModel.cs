@@ -27,6 +27,8 @@ namespace estacionamentoApp.Models
         public required EmpresaModel Empresa { get; set; }
 
         public EnderecoModel Endereco { get; set; }
+
+        public bool Ativo { get; set; } = true;
     }
 
 }

@@ -10,19 +10,19 @@ namespace estacionamentoApp.Data
         {    
         }
 
-        public DbSet<ClienteModel> cliente { get; set; }
+        public DbSet<ClienteModel> Cliente { get; set; }
 
-        public DbSet<VeiculoModel> veiculo { get; set; }
+        public DbSet<VeiculoModel> Veiculo { get; set; }
 
-        public DbSet<EmpresaModel> empresa { get; set; }
+        public DbSet<EmpresaModel> Empresa { get; set; }
 
-        public DbSet<EnderecoModel> endereco { get; set; }
+        public DbSet<EnderecoModel> Endereco { get; set; }
 
-        public DbSet<FilialModel> filial { get; set; }
+        public DbSet<FilialModel> Filial { get; set; }
 
-        public DbSet<EstacionamentoModel> estacionamento { get; set; }
+        public DbSet<EstacionamentoModel> Estacionamento { get; set; }
 
-        public DbSet<VeiculoEstacionamentoModel> veiculoEstacionamentoModels { get; set; }
+        public DbSet<VeiculoEstacionamentoModel> VeiculoEstacionamento { get; set; }
 
 
     }

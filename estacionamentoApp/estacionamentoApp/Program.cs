@@ -1,4 +1,5 @@
 using estacionamentoApp.Data;
+using estacionamentoApp.Services.ClienteService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         new MySqlServerVersion(new Version(8, 4, 0))
     );
 });
+
+//Comunicação da Interface com a Service 
+builder.Services.AddScoped<IClienteInterface, ClienteSerivce>();
+
+
 
 var app = builder.Build();
 

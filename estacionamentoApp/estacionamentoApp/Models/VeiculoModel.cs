@@ -21,5 +21,7 @@ namespace estacionamentoApp.Models
 
         [Required(ErrorMessage = "Informe o nome do cliente")]
         public required ClienteModel Cliente { get; set; }
+
+        public bool Ativo { get; set; } = true;
     }
 }

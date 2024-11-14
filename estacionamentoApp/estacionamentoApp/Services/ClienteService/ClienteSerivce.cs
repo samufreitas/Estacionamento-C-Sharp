@@ -53,9 +53,12 @@ namespace estacionamentoApp.Services.ClienteService
 
             try
             {
-                var emprestimos = await _context.Cliente.ToListAsync();
+                //Filtra os clientes para exibir apenas os clientes com ativo = TRUE
+                var clientes = await _context.Cliente
+            .Where(c => c.Ativo != false)
+            .ToListAsync();
 
-                response.Dados = emprestimos;
+                response.Dados = clientes;
                 response.Mensagem = "Dados coletados com sucesso!";
 
                 return response;
@@ -119,12 +122,21 @@ namespace estacionamentoApp.Services.ClienteService
             }
         }
 
-        public async Task<ResponseModel<ClienteModel>> RemoveCliente(ClienteModel clienteModel)
+        public async Task<ResponseModel<ClienteModel>> RemoveCliente(long? id)
         {
             ResponseModel<ClienteModel> response = new ResponseModel<ClienteModel>();
             try
             {
-                _context.Remove(clienteModel);
+                var cliente = await BuscarClientePorId(id);
+                if (cliente.Status == false || cliente.Dados == null)
+                {
+                    response.Mensagem = "Cliente não localizado para exclusão!";
+                    response.Status = false;
+                    return response;
+                }
+
+                cliente.Dados.Ativo = false;
+                _context.Update(cliente.Dados);
                 await _context.SaveChangesAsync();
 
                 response.Mensagem = "Remoção realizada com sucesso!";

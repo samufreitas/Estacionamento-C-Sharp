@@ -8,6 +8,6 @@ namespace estacionamentoApp.Services.ClienteService
         Task<ResponseModel<ClienteModel>> BuscarClientePorId(long? id);
         Task<ResponseModel<ClienteModel>> CadastrarCliente(ClienteModel clienteModel);
         Task<ResponseModel<ClienteModel>> EditarCliente(ClienteModel clienteModel);
-        Task<ResponseModel<ClienteModel>> RemoveCliente(ClienteModel clienteModel);
+        Task<ResponseModel<ClienteModel>> RemoveCliente(long? id);
     }
 }

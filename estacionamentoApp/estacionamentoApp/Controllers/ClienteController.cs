@@ -48,5 +48,64 @@ namespace estacionamentoApp.Controllers
             }
             return View();
         }
+
+        // Métodos para atualização do cadastro de um cliente
+
+        [HttpGet]
+        public async Task<IActionResult> Editar(int? id)
+        {
+            
+            //Pegando o registro com o mesmo id informado no banco de dados
+            var cliente = await _clienteInterface.BuscarClientePorId(id);
+
+            return View(cliente.Dados);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Editar(ClienteModel cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                var clienteResult = await _clienteInterface.EditarCliente(cliente);
+
+                if (clienteResult.Status)
+                {
+                    TempData["MensagemSucesso"] = clienteResult.Mensagem;
+                }
+                else
+                {
+                    TempData["MensagemErro"] = clienteResult.Mensagem;
+                    return View(cliente);
+                }
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["MensagemErro"] = "Não foi possível realizar essa operação!";
+            }
+
+            return View(cliente);
+        }
+        //Método para excluir um cliente
+        public async Task<IActionResult> Excluir(long? id)
+        {
+            if (id == null)
+            {
+                TempData["MensagemErro"] = "Cliente não localizado!";
+                return View(id);
+            }
+            var clienteResult = await _clienteInterface.RemoveCliente(id);
+            if (clienteResult.Status)
+            {
+                TempData["MensagemSucesso"] = clienteResult.Mensagem;
+            }
+            else
+            {
+                TempData["MensagemErro"] = clienteResult.Mensagem;
+            }
+
+
+            return RedirectToAction("Index");
+        }
     }
 }

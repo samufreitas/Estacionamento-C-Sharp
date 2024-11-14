@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\estacionamentoApp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\css\\Materialcss",
+      "PackagePath": "staticwebassets\\css"
+    },
+    {
       "Id": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

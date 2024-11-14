@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "avciQWYLRgUzrM2+4LtE8gi7H9euJK7Eoq7AZZBHNa4=",
+  "Hash": "+K/FU/TTesu+T3NtcgCF8iSB+VcXqi+PiQerIEdAc5A=",
   "Source": "estacionamentoApp",
   "BasePath": "_content/estacionamentoApp",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\estacionamentoApp.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\css\\Materialcss",
+      "SourceId": "estacionamentoApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\",
+      "BasePath": "_content/estacionamentoApp",
+      "RelativePath": "css/Materialcss",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Materialcss"
     },
     {
       "Identity": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\css\\site.css",

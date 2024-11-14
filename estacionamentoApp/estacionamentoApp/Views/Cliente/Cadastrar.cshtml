@@ -1,0 +1,39 @@
+﻿    @using estacionamentoApp.Models
+    @using estacionamentoApp.Models.Enus
+    @model ClienteModel
+
+    @{
+        ViewData["title"] = "Cadastrar cliente";
+    }
+    <div class="container p-5 rounded-5">
+
+        <div class="mb-5 text-center">
+            <h2>Cadastro de cliente</h2>
+       </div>
+
+        <form method="post" asp-controller="Cliente" asp-action="Cadastrar">
+            <div class="mb-3">
+                <label for="Recebedor" class="form-label text-black">Nome completo:</label>
+                <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Informe o nome completo">
+                <span class="text-danger" asp-validation-for="Nome"></span>
+            </div>
+            <div class="mb-3">
+                <label for="Tipo" class="form-label text-black">Tipo de cliente:</label>
+                <select class="form-control" id="Tipo" asp-for="Tipo" asp-items="Html.GetEnumSelectList<ClienteEnum>()" onchange="tipoCliente()">
+                </select>
+                <span class="text-danger" asp-validation-for="Tipo"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Cpf_Cnpj" class="form-label text-black">CPF/CNPJ:</label>
+                <input type="text" class="form-control" id="Cpf_Cnpj" asp-for="Cpf_Cnpj" placeholder="Informe o CPF/CNPJ do cliente">
+                <span class="text-danger" asp-validation-for="Cpf_Cnpj"></span>
+            </div>
+        
+            <div class="d-flex gap-5 mt-5">
+                <button type="submit" class="btn btn-success w-50">Salvar</button>
+                <a class="btn btn-primary w-50" asp-controller="Cliente" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+
+    </div>

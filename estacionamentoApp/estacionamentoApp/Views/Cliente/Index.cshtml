@@ -1,0 +1,56 @@
+﻿﻿@using estacionamentoApp.Models
+@model IEnumerable<ClienteModel>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2>Lista de clientes</h2>
+        <a class="btn btn-success mx-2" asp-controller="Cliente" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar cliente</a>
+    </div>
+
+    <!--Parte que exibe as mensagens das operações realizadas-->
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+
+    <table id="Clientes" class="table table-light table-hover mt-5">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Tipo</th>
+                <th scope="col" class="text-center">Cpf/Cnpj</th>
+                <th scope="col" class="text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Aqui verificamos e iteramos sobre o IEnumerable *@
+        @if(Model != null){
+            @foreach(var clientes in Model)
+            {   
+                <tr>
+                        <td scope="row" class="text-center">@clientes.Id</td>
+                        <td class="text-center">@clientes.Nome</td>
+                        <td class="text-center">@clientes.Tipo</td>
+                        <td class="text-center">@clientes.Cpf_Cnpj</td>
+                        <td class="text-center">
+                            <a asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@clientes.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+                            <a asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@clientes.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                        </td>
+                </tr>
+                
+            }
+            
+        }
+    </tbody>
+</table>
+</div>

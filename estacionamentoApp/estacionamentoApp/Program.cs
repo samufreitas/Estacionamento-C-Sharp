@@ -1,5 +1,7 @@
 using estacionamentoApp.Data;
 using estacionamentoApp.Services.ClienteService;
+using estacionamentoApp.Services.EmpresaService;
+using estacionamentoApp.Services.VeiculoService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //Comunicação da Interface com a Service 
 builder.Services.AddScoped<IClienteInterface, ClienteSerivce>();
+builder.Services.AddScoped<IVeiculoInterface, VeiculoService>();
+builder.Services.AddScoped<IEmpresaInterface, EmpresaService>();
 
 
 

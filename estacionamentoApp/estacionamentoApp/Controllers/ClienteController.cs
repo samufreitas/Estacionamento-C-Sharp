@@ -50,7 +50,6 @@ namespace estacionamentoApp.Controllers
         }
 
         // Métodos para atualização do cadastro de um cliente
-
         [HttpGet]
         public async Task<IActionResult> Editar(int? id)
         {

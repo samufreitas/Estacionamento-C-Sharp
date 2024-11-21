@@ -1,0 +1,54 @@
+﻿@using estacionamentoApp.Models
+@model VeiculoModel
+
+@{
+    ViewData["title"] = "Editar veiculo";
+}
+<div class="container p-5 rounded-5">
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <div class="mb-5 text-center">
+        <h2>Edição de veículo</h2>
+    </div>
+
+    <form method="post" asp-controller="Veiculo" asp-action="Editar">
+
+        <input type="hidden" asp-for=Id />
+
+        <div class="mb-3">
+            <label for="Marca" class="form-label text-black">Marca:</label>
+            <input type="text" class="form-control" id="Marca" asp-for="Marca" placeholder="Informe a marca do veiculo">
+            <span class="text-danger" asp-validation-for="Marca"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Modelo" class="form-label text-black">Modelo:</label>
+            <input type="text" class="form-control" id="Modelo" asp-for="Modelo" placeholder="Informe o modelo do veiculo">
+            <span class="text-danger" asp-validation-for="Modelo"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Placa" class="form-label text-black">Placa:</label>
+            <input type="text" class="form-control" id="Placa" asp-for="Placa" placeholder="Informe a placa do veiculo">
+            <span class="text-danger" asp-validation-for="Placa"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="ClienteId" class="form-label text-black">Cliente:</label>
+            <select class="form-control" id="ClienteId" asp-for="ClienteId" asp-items="@(new SelectList(ViewBag.Clientes, "Id", "Nome"))">
+                <option value="">Selecione um cliente</option>
+            </select>
+            <span class="text-danger" asp-validation-for="ClienteId"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50">Editar</button>
+            <a asp-controller="Cliente" asp-action="Index" class="btn btn-primary w-50"><i class="bi bi-arrow-left-square mx-2"></i>Voltar</a>
+        </div>
+    </form>
+
+</div>

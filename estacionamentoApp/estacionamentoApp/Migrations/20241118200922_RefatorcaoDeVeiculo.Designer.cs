@@ -12,8 +12,8 @@ using estacionamentoApp.Data;
 namespace estacionamentoApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241113194512_CriacaoDasDemaisTabelas")]
-    partial class CriacaoDasDemaisTabelas
+    [Migration("20241118200922_RefatorcaoDeVeiculo")]
+    partial class RefatorcaoDeVeiculo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace estacionamentoApp.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Cpf_Cnpj")
                         .IsRequired()
                         .HasColumnType("VARCHAR(255)");
@@ -47,7 +50,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("cliente");
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.EmpresaModel", b =>
@@ -57,6 +60,9 @@ namespace estacionamentoApp.Migrations
                         .HasColumnType("bigint");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
@@ -68,7 +74,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("empresa");
+                    b.ToTable("Empresa");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.EnderecoModel", b =>
@@ -105,7 +111,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("endereco");
+                    b.ToTable("Endereco");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.EstacionamentoModel", b =>
@@ -115,6 +121,9 @@ namespace estacionamentoApp.Migrations
                         .HasColumnType("bigint");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<long>("FilialId")
                         .HasColumnType("bigint");
@@ -127,7 +136,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasIndex("FilialId");
 
-                    b.ToTable("estacionamento");
+                    b.ToTable("Estacionamento");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.FilialModel", b =>
@@ -137,6 +146,9 @@ namespace estacionamentoApp.Migrations
                         .HasColumnType("bigint");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
@@ -166,7 +178,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("filial");
+                    b.ToTable("Filial");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoEstacionamentoModel", b =>
@@ -195,7 +207,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasIndex("veiculoId");
 
-                    b.ToTable("veiculoEstacionamentoModels");
+                    b.ToTable("VeiculoEstacionamento");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoModel", b =>
@@ -205,6 +217,9 @@ namespace estacionamentoApp.Migrations
                         .HasColumnType("bigint");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<long>("ClienteId")
                         .HasColumnType("bigint");
@@ -225,7 +240,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("veiculo");
+                    b.ToTable("Veiculo");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.EstacionamentoModel", b =>
@@ -280,12 +295,17 @@ namespace estacionamentoApp.Migrations
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoModel", b =>
                 {
                     b.HasOne("estacionamentoApp.Models.ClienteModel", "Cliente")
-                        .WithMany()
+                        .WithMany("Veiculos")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("estacionamentoApp.Models.ClienteModel", b =>
+                {
+                    b.Navigation("Veiculos");
                 });
 #pragma warning restore 612, 618
         }

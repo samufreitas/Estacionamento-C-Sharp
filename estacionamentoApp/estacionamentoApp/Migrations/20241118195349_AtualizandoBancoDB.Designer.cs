@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using estacionamentoApp.Data;
 
@@ -11,9 +12,11 @@ using estacionamentoApp.Data;
 namespace estacionamentoApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241118195349_AtualizandoBancoDB")]
+    partial class AtualizandoBancoDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,13 +294,13 @@ namespace estacionamentoApp.Migrations
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoModel", b =>
                 {
-                    b.HasOne("estacionamentoApp.Models.ClienteModel", "Cliente")
+                    b.HasOne("estacionamentoApp.Models.ClienteModel", "Clientes")
                         .WithMany("Veiculos")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Clientes");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.ClienteModel", b =>

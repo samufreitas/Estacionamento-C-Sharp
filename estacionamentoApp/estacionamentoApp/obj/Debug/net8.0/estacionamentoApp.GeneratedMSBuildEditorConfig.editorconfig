@@ -30,6 +30,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Empresa/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxDYWRhc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Empresa/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Empresa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +56,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Veiculo/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xDYWRhc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Veiculo/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/Veiculo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos em C-Sharp/EstacionamentoContax/estacionamentoApp/estacionamentoApp/Views/_ViewImports.cshtml]

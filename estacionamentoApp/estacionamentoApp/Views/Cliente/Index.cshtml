@@ -1,10 +1,13 @@
 ﻿﻿@using estacionamentoApp.Models
 @model IEnumerable<ClienteModel>
 
+@{
+    ViewData["title"] = "Clientes";
+}
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h2>Lista de clientes</h2>
-        <a class="btn btn-success mx-2" asp-controller="Cliente" asp-action="Cadastrar"><i class="bi bi-person-plus-fill mx-2"></i>Adiconar cliente</a>
+        <a class="btn btn-success mx-2" asp-controller="Cliente" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar cliente</a>
     </div>
 
     <!--Parte que exibe as mensagens das operações realizadas-->

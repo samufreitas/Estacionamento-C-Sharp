@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using estacionamentoApp.Data;
 
@@ -11,9 +12,11 @@ using estacionamentoApp.Data;
 namespace estacionamentoApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241118190613_AdicionandoIColletionEmClientes")]
+    partial class AdicionandoIColletionEmClientes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,6 +224,9 @@ namespace estacionamentoApp.Migrations
                     b.Property<long>("ClienteId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("ClientesId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Marca")
                         .IsRequired()
                         .HasColumnType("VARCHAR(255)");
@@ -235,7 +241,7 @@ namespace estacionamentoApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("ClientesId");
 
                     b.ToTable("Veiculo");
                 });
@@ -291,13 +297,13 @@ namespace estacionamentoApp.Migrations
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoModel", b =>
                 {
-                    b.HasOne("estacionamentoApp.Models.ClienteModel", "Cliente")
+                    b.HasOne("estacionamentoApp.Models.ClienteModel", "Clientes")
                         .WithMany("Veiculos")
-                        .HasForeignKey("ClienteId")
+                        .HasForeignKey("ClientesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Clientes");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.ClienteModel", b =>

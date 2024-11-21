@@ -29,6 +29,17 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Cliente" asp-action="Index"><i class="bi bi-people-fill mx-2"></i>Clientes</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Veiculo" asp-action="Index"><i class="bi bi-car-front-fill mx-2"></i>Veiculos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-diagram-3-fill mx-2"></i>Organização</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Empresa" asp-action="Index"><i class="bi bi-buildings-fill mx-2"></i>Empresas</a>
+                                <hr/>
+                                <a class="dropdown-item" asp-controller="Empresa" asp-action="Index"><i class="bi bi-building-fill mx-2"></i>Filiais</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="bi bi-journals mx-2"></i>Sair</a>
                         </li>
                     </ul>
@@ -54,6 +65,9 @@
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.11/dist/jquery.validate.unobtrusive.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,68 @@
+﻿﻿@using estacionamentoApp.Models
+@model IEnumerable<EmpresaModel>
+
+@{
+    ViewData["title"] = "Empresas";
+}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2>Lista de empresa</h2>
+        <a class="btn btn-success mx-2" asp-controller="Empresa" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar empresa</a>
+    </div>
+
+    <!--Parte que exibe as mensagens das operações realizadas-->
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+
+    <table id="Clientes" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">CNPJ</th>
+                <th scope="col" class="text-center">Ativo</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Aqui verificamos e iteramos sobre o IEnumerable *@
+            @if (Model != null)
+            {
+                @foreach (var empresas in Model)
+                {
+                    <tr>
+                        <td scope="row" class="text-center">@empresas.Id</td>
+                        <td class="text-center">@empresas.Nome</td>
+                        <td class="text-center">@empresas.Cnpj</td>
+                        <td class="text-center">@empresas.Ativo</td>
+                        <td class="text-center">
+                            <a asp-controller="Empresa" asp-action="Editar" asp-route-id="@empresas.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+
+                            <a href="@Url.Action("Excluir", "Empresa", new { id = @empresas.Id })"
+                               onclick="return confirmarExclusao();"
+                               class="btn btn-danger"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                        </td>
+                    </tr>
+
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja excluir essa empresa?");
+    }
+</script>

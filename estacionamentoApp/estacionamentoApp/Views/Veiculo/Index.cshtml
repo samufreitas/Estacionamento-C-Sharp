@@ -1,0 +1,68 @@
+﻿﻿@using estacionamentoApp.Models
+@model IEnumerable<VeiculoModel>
+
+@{
+    ViewData["title"] = "Veículos";
+}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2>Lista de veículos</h2>
+        <a class="btn btn-success mx-2" asp-controller="Veiculo" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar veiculo</a>
+    </div>
+
+    <!--Parte que exibe as mensagens das operações realizadas-->
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <table id="Clientes" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nome cliente</th>
+                <th scope="col" class="text-center">Marca</th>
+                <th scope="col" class="text-center">Modelo</th>
+                <th scope="col" class="text-center">Placa</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Aqui verificamos e iteramos sobre o IEnumerable *@
+            @if (Model != null)
+            {
+                @foreach (var veiculos in Model)
+                {
+                    <tr>
+                        <td scope="row" class="text-center">@veiculos.Id</td>
+                        <td class="text-center">@veiculos.Cliente?.Nome</td>
+                        <td class="text-center">@veiculos.Marca</td>
+                        <td class="text-center">@veiculos.Modelo</td>
+                        <td class="text-center">@veiculos.Placa</td>
+                        <td class="text-center">
+                            <a asp-controller="Veiculo" asp-action="Editar" asp-route-id="@veiculos.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+
+                            <a href="@Url.Action("Excluir", "Veiculo", new { id = @veiculos.Id })"
+                               onclick="return confirmarExclusao();"
+                               class="btn btn-danger"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                        </td>
+                    </tr>
+
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja excluir este veículo?");
+    }
+</script>

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace estacionamentoApp.Models
 {
@@ -17,11 +18,16 @@ namespace estacionamentoApp.Models
 
         [Required(ErrorMessage = "Informe a placa do veículo")]
         [Column(TypeName = "VARCHAR(255)")]
-        public required string Placa { get; set; } 
+        public required string Placa { get; set; }
 
-        [Required(ErrorMessage = "Informe o nome do cliente")]
-        public required ClienteModel Cliente { get; set; }
+        [Required(ErrorMessage = "Selecione um cliente")]
+        [ForeignKey("Cliente")]
+        public required long ClienteId { get; set; }
+
+        [ValidateNever]
+        public ClienteModel Cliente { get; set; }
 
         public bool Ativo { get; set; } = true;
     }
+
 }

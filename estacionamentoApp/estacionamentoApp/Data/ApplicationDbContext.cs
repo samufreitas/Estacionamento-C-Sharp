@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
+using estacionamentoApp.Map;
 using estacionamentoApp.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,14 @@ namespace estacionamentoApp.Data
         public DbSet<EstacionamentoModel> Estacionamento { get; set; }
 
         public DbSet<VeiculoEstacionamentoModel> VeiculoEstacionamento { get; set; }
+
+        //// Faz parte do vinculo entre cliente e veiculos
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new VeiculoMap());
+            base.OnModelCreating(modelBuilder);
+        }
+
 
 
     }

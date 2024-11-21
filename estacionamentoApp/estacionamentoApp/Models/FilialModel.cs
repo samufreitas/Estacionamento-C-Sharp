@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace estacionamentoApp.Models
 {
@@ -23,9 +24,17 @@ namespace estacionamentoApp.Models
         [Column(TypeName = "VARCHAR(255)")]
         public required string Cnpj { get; set; }
 
-        [Required(ErrorMessage = "Informe qual empresa a filial pertence!")]
-        public required EmpresaModel Empresa { get; set; }
+        [Required(ErrorMessage = "Selecione uma empresa!")]
+        [ForeignKey("Empresa")]
+        public required long EmpresaId { get; set; }
 
+        [ValidateNever]
+        public EmpresaModel Empresa { get; set; }
+
+        [ForeignKey("Endereco")]
+        public required long EnderecoId { get; set; }
+
+        [ValidateNever]
         public EnderecoModel Endereco { get; set; }
 
         public bool Ativo { get; set; } = true;

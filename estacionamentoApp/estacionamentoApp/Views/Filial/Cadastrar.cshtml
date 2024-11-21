@@ -1,0 +1,103 @@
+﻿@using estacionamentoApp.Dto
+@model FilialCadastroDto
+
+@{
+    ViewData["title"] = "Cadastrar filial";
+}
+<!--Parte que exibe as mensagens das operações realizadas-->
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-light" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-light" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+<div class="container p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h2>Cadastro de filial</h2>
+    </div>
+
+    <form method="post" asp-controller="Filial" asp-action="Cadastrar">
+
+        <div class="mb-3">
+            <label for="Nome" class="form-label text-black">Nome:</label>
+            <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Informe o nome da filial!">
+            <span class="text-danger" asp-validation-for="Nome"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="NomeFantasia" class="form-label text-black">Nome fantasia:</label>
+            <input type="text" class="form-control" id="NomeFantasia" asp-for="NomeFantasia" placeholder="Informe o nome fantasia da filial">
+            <span class="text-danger" asp-validation-for="NomeFantasia"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="InscricaoEstadual" class="form-label text-black">Inscricao estadual:</label>
+            <input type="text" class="form-control" id="InscricaoEstadual" asp-for="InscricaoEstadual" placeholder="Informe a inscrição estadual da filial">
+            <span class="text-danger" asp-validation-for="InscricaoEstadual"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Cnpj" class="form-label text-black">CNPJ:</label>
+            <input type="text" class="form-control" id="Cnpj" asp-for="Cnpj" placeholder="Informe o CNPJ da filial">
+            <span class="text-danger" asp-validation-for="Cnpj"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Cep" class="form-label text-black">CEP:</label>
+            <input type="text" class="form-control" id="Cep" asp-for="Cep" placeholder="Informe o CEP da filial">
+            <span class="text-danger" asp-validation-for="Cep"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Rua" class="form-label text-black">Rua:</label>
+            <input type="text" class="form-control" id="Rua" asp-for="Rua" placeholder="Informe o nome da rua da filial">
+            <span class="text-danger" asp-validation-for="Rua"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Bairro" class="form-label text-black">Bairro:</label>
+            <input type="text" class="form-control" id="Bairro" asp-for="Bairro" placeholder="Informe o nome do bairro da filial">
+            <span class="text-danger" asp-validation-for="Bairro"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Cidade" class="form-label text-black">Cidade:</label>
+            <input type="text" class="form-control" id="Cidade" asp-for="Cidade" placeholder="Informe o nome da cidade da filial">
+            <span class="text-danger" asp-validation-for="Cidade"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Estado" class="form-label text-black">Estado:</label>
+            <input type="text" class="form-control" id="Estado" asp-for="Estado" placeholder="Informe o nome do estado da filial">
+            <span class="text-danger" asp-validation-for="Estado"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Pais" class="form-label text-black">Pais:</label>
+            <input type="text" class="form-control" id="Pais" asp-for="Pais" placeholder="Informe o nome do pais da filial">
+            <span class="text-danger" asp-validation-for="Pais"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="EmpresaId" class="form-label text-black">Empresa:</label>
+            <select class="form-control" id="EmpresaId" asp-for="EmpresaId" asp-items="@(new SelectList(ViewBag.Empresas, "Id", "Nome"))">
+                <option value="">Selecione uma empresa</option>
+            </select>
+            <span class="text-danger" asp-validation-for="EmpresaId"></span>
+        </div>
+
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50"><i class="bi bi-save mx-2"></i>Salvar</button>
+            <a class="btn btn-primary w-50" asp-controller="Filial" asp-action="Index"><i class="bi bi-arrow-left-square mx-2"></i>Voltar</a>
+        </div>
+    </form>
+
+</div>

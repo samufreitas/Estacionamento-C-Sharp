@@ -1,6 +1,8 @@
 using estacionamentoApp.Data;
 using estacionamentoApp.Services.ClienteService;
 using estacionamentoApp.Services.EmpresaService;
+using estacionamentoApp.Services.EnderecoService;
+using estacionamentoApp.Services.FilialService;
 using estacionamentoApp.Services.VeiculoService;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IClienteInterface, ClienteSerivce>();
 builder.Services.AddScoped<IVeiculoInterface, VeiculoService>();
 builder.Services.AddScoped<IEmpresaInterface, EmpresaService>();
+builder.Services.AddScoped<IFilialInterface, FilialService>();
+builder.Services.AddScoped<IEnderecoInterface, EnderecoService>();
 
 
 

@@ -1,0 +1,74 @@
+﻿﻿@using estacionamentoApp.Dto
+@model IEnumerable<FilialListDto>
+
+@{
+    ViewData["title"] = "Filiais";
+}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2>Lista de filiais</h2>
+        <a class="btn btn-success mx-2" asp-controller="Filial" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar filial</a>
+    </div>
+
+    <!--Parte que exibe as mensagens das operações realizadas-->
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <table id="Clientes" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Nome fantasia</th>
+                <th scope="col" class="text-center">Inscrição estadual</th>
+                <th scope="col" class="text-center">Cnpj</th>
+                <th scope="col" class="text-center">Empresa</th>
+                <th scope="col" class="text-center">Rua</th>
+                <th scope="col" class="text-center">Cidade</th>
+                <th scope="col" class="text-center">Estado</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Aqui verificamos e iteramos sobre o IEnumerable *@
+            @if (Model != null)
+            {
+                @foreach (var filiais in Model)
+                {
+                    <tr>
+                        <td scope="row" class="text-center">@filiais.Id</td>
+                        <td class="text-center">@filiais.Nome</td>
+                        <td class="text-center">@filiais.NomeFantasia</td>
+                        <td class="text-center">@filiais.InscricaoEstadual</td>
+                        <td class="text-center">@filiais.Cnpj</td>
+                        <td class="text-center">@filiais.EmpresaNome</td>
+                        <td class="text-center">@filiais.Rua</td>
+                        <td class="text-center">@filiais.Cidade</td>
+                        <td class="text-center">@filiais.Estado</td>
+                        <td class="text-center">
+                            <a asp-controller="Filial" asp-action="Editar" asp-route-id="@filiais.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+
+                            <a href="@Url.Action("Excluir", "Filial", new { id = filiais.Id })"
+                               onclick="return confirmarExclusao();"
+                               class="btn btn-danger"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja excluir essa filial?");
+    }
+</script>

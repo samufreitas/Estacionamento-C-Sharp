@@ -113,5 +113,26 @@ namespace estacionamentoApp.Controllers
 
             return View(filial);
         }
+        //Método para excluir uma filial
+        public async Task<IActionResult> Excluir(long? id)
+        {
+            if (id == null)
+            {
+                TempData["MensagemErro"] = "Filial não localizada!";
+                return View(id);
+            }
+            var filialResult = await _filialInterface.RemoveFilial(id);
+            if (filialResult.Status)
+            {
+                TempData["MensagemSucesso"] = filialResult.Mensagem;
+            }
+            else
+            {
+                TempData["MensagemErro"] = filialResult.Mensagem;
+            }
+
+
+            return RedirectToAction("Index");
+        }
     }
 }

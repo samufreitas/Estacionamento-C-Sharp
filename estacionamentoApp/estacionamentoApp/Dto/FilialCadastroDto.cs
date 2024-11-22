@@ -22,6 +22,7 @@ namespace estacionamentoApp.Dto
         public required string InscricaoEstadual { get; set; }
 
         [Required(ErrorMessage = "Informe o CNPJ da filial!")]
+        [RegularExpression(@"^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$", ErrorMessage = "CNPJ inválido. Formato esperado: 00.000.000/0000-00")]
         [Column(TypeName = "VARCHAR(255)")]
         public required string Cnpj { get; set; }
 
@@ -39,6 +40,7 @@ namespace estacionamentoApp.Dto
         public required long EnderecoId { get; set; }
 
         [Required(ErrorMessage = "Informe o CEP da filial")]
+        [RegularExpression(@"^\d{2}\.\d{3}-\d{3}$", ErrorMessage = "CEP inválido. O formato esperado é 00.000-000.")]
         [Column(TypeName = "VARCHAR(255)")]
         public required string Cep { get; set; }
 
@@ -55,6 +57,7 @@ namespace estacionamentoApp.Dto
         public required string Cidade { get; set; }
 
         [Required(ErrorMessage = "Informe o estado da filial")]
+        [RegularExpression(@"^[A-Z]{2}$", ErrorMessage = "Estado inválido. O formato esperado é UF.")]
         [Column(TypeName = "VARCHAR(255)")]
         public required string Estado { get; set; }
 

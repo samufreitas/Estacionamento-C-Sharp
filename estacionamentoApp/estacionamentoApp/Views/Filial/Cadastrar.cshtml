@@ -26,6 +26,12 @@
     <form method="post" asp-controller="Filial" asp-action="Cadastrar">
 
         <div class="mb-3">
+            <label for="Cnpj" class="form-label text-black">CNPJ:</label>
+            <input type="text" class="form-control" id="Cnpj" asp-for="Cnpj" placeholder="Informe o CNPJ da filial">
+            <span class="text-danger" asp-validation-for="Cnpj"></span>
+        </div>
+
+        <div class="mb-3">
             <label for="Nome" class="form-label text-black">Nome:</label>
             <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Informe o nome da filial!">
             <span class="text-danger" asp-validation-for="Nome"></span>
@@ -41,12 +47,6 @@
             <label for="InscricaoEstadual" class="form-label text-black">Inscricao estadual:</label>
             <input type="text" class="form-control" id="InscricaoEstadual" asp-for="InscricaoEstadual" placeholder="Informe a inscrição estadual da filial">
             <span class="text-danger" asp-validation-for="InscricaoEstadual"></span>
-        </div>
-
-        <div class="mb-3">
-            <label for="Cnpj" class="form-label text-black">CNPJ:</label>
-            <input type="text" class="form-control" id="Cnpj" asp-for="Cnpj" placeholder="Informe o CNPJ da filial">
-            <span class="text-danger" asp-validation-for="Cnpj"></span>
         </div>
 
         <div class="mb-3">
@@ -99,5 +99,6 @@
             <a class="btn btn-primary w-50" asp-controller="Filial" asp-action="Index"><i class="bi bi-arrow-left-square mx-2"></i>Voltar</a>
         </div>
     </form>
-
 </div>
+
+

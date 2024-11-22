@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\js\\cnpjVerifica.js",
+      "PackagePath": "staticwebassets\\js\\cnpjVerifica.js"
+    },
+    {
+      "Id": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\js\\consultarCep.js",
+      "PackagePath": "staticwebassets\\js\\consultarCep.js"
+    },
+    {
       "Id": "D:\\Projetos em C-Sharp\\EstacionamentoContax\\estacionamentoApp\\estacionamentoApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

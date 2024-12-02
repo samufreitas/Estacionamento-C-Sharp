@@ -2,10 +2,10 @@
     $('#Clientes').DataTable({
         language: {
             "decimal": "",
-            "emptyTable": "No data available in table",
+            "emptyTable": "Não há dados disponíveis para listar",
             "info": "Mostrando _START_ registro de _END_ em um total _TOTAL_ entradas",
-            "infoEmpty": "Showing 0 to 0 of 0 entries",
-            "infoFiltered": "(filtered from _MAX_ total entries)",
+            "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+            "infoFiltered": "(filtrado de um total de _MAX_ entradas)",
             "infoPostFix": "",
             "thousands": ",",
             "lengthMenu": "Mostrar _MENU_ entradas",

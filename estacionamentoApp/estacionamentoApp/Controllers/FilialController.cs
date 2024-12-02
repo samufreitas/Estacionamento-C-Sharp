@@ -62,7 +62,7 @@ namespace estacionamentoApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            // Recarrega os clientes para exibir novamente o formulário
+            // Recarrega as empresas para exibir novamente o formulário
             var empresasResponse = await _empresaInterface.BuscarEmpresas();
             ViewBag.Empresas = empresasResponse.Status ? empresasResponse.Dados : new List<EmpresaModel>();
             return View();

@@ -95,7 +95,6 @@ namespace estacionamentoApp.Services.VeiculoService
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao salvar veículo: {ex.Message}");
                 response.Mensagem = ex.Message;
                 response.Status = false;
                 return response;

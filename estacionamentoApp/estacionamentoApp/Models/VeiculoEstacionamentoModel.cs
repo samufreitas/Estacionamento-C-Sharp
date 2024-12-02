@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace estacionamentoApp.Models
 {
@@ -6,13 +8,21 @@ namespace estacionamentoApp.Models
     {
         public long Id { get; set; }
 
+        public DateTime DataHoraEntrada { get; set; } = DateTime.Now;
 
-        public DateTime DataHoraEntrada { get; set; }
+        public DateTime? DataHoraSaida { get; set; }
 
-        public DateTime DataHoraSaida { get; set; }
+        [Required(ErrorMessage = "Informe o veículo")]
+        [ForeignKey("Veiculo")]
+        public long VeiculoId { get; set; }
 
-        public VeiculoModel veiculo { get; set; }
+        [ValidateNever]
+        public VeiculoModel Veiculo { get; set; }
 
-        public EstacionamentoModel estacionamento { get; set; }
+        [ForeignKey("Estacionamento")]
+        public long EstacionamentoId { get; set; }
+
+        [ValidateNever]
+        public EstacionamentoModel Estacionamento { get; set; }
     }
 }

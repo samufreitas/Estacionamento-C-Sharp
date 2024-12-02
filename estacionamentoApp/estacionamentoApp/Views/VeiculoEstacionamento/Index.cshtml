@@ -1,0 +1,108 @@
+﻿@using estacionamentoApp.Models
+@model IEnumerable<VeiculoEstacionamentoModel>
+@{
+    ViewData["Title"] = "Registros";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2>Veículos estacionados</h2>
+        <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#AddVeiculoEstacionarModal">
+            <i class="bi bi-plus-square mx-2"></i>Adicionar entrada!
+        </button>
+    </div>
+
+    <!-- Exibir mensagens de sucesso ou erro -->
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <!-- Tabela de veículos -->
+    <table id="Clientes" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Nome cliente</th>
+                <th scope="col" class="text-center">Veículo modelo</th>
+                <th scope="col" class="text-center">Veículo placa</th>
+                <th scope="col" class="text-center">Data/hora entrada</th>
+                <th scope="col" class="text-center">Data/hora saída</th>
+                <th scope="col" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var veiculosEstacionados in Model)
+                {
+                    <tr>
+                        <td class="text-center">@veiculosEstacionados.Veiculo?.Cliente.Nome</td>
+                        <td class="text-center">@veiculosEstacionados.Veiculo?.Modelo</td>
+                        <td class="text-center">@veiculosEstacionados.Veiculo?.Placa</td>
+                        <td class="text-center">@veiculosEstacionados.DataHoraEntrada</td>
+                        <td class="text-center">@veiculosEstacionados.DataHoraSaida</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("AddSaida", "VeiculoEstacionamento", new { id = veiculosEstacionados.Id })"
+                               onclick="return confirmarExclusao();"
+                               class="btn btn-warning"><i class="bi bi-pencil-square mx-2"></i>Marca saída</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="AddVeiculoEstacionarModal" tabindex="-1" aria-labelledby="AddVeiculoEstacionarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddVeiculoEstacionarModalLabel">Adicionar Entrada</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" asp-controller="VeiculoEstacionamento" asp-action="AddEntrada">
+                        <input type="hidden" name="EstacionamentoId" value="@ViewBag.EstacionamentoId" />
+
+                        <div class="mb-3">
+                            <label for="VeiculoId" class="form-label text-black">Veículo:</label>
+                            <select class="form-control" id="VeiculoId" name="VeiculoId">
+                                <option value="">Selecione um veículo</option>
+                                @if (ViewBag.Veiculos != null)
+                                {
+                                    foreach (var veiculo in ViewBag.Veiculos)
+                                    {
+                                        <option value="@veiculo.Id">@veiculo.Modelo</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="d-flex gap-5 mt-5">
+                            <button type="submit" class="btn btn-success w-50">
+                                <i class="bi bi-save mx-2"></i>Salvar
+                            </button>
+                            <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">
+                                <i class="bi bi-x-square mx-2"></i>Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja marca a saída desse veículo?");
+    }
+</script>

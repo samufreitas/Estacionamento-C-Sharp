@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using estacionamentoApp.Data;
 
@@ -11,9 +12,11 @@ using estacionamentoApp.Data;
 namespace estacionamentoApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241122161101_AjusteDeRelacionamentoEmEstacionamento")]
+    partial class AjusteDeRelacionamentoEmEstacionamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,20 +192,20 @@ namespace estacionamentoApp.Migrations
                     b.Property<DateTime>("DataHoraEntrada")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime?>("DataHoraSaida")
+                    b.Property<DateTime>("DataHoraSaida")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<long>("EstacionamentoId")
+                    b.Property<long>("estacionamentoId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("VeiculoId")
+                    b.Property<long>("veiculoId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EstacionamentoId");
+                    b.HasIndex("estacionamentoId");
 
-                    b.HasIndex("VeiculoId");
+                    b.HasIndex("veiculoId");
 
                     b.ToTable("VeiculoEstacionamento");
                 });
@@ -272,21 +275,21 @@ namespace estacionamentoApp.Migrations
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoEstacionamentoModel", b =>
                 {
-                    b.HasOne("estacionamentoApp.Models.EstacionamentoModel", "Estacionamento")
+                    b.HasOne("estacionamentoApp.Models.EstacionamentoModel", "estacionamento")
                         .WithMany()
-                        .HasForeignKey("EstacionamentoId")
+                        .HasForeignKey("estacionamentoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("estacionamentoApp.Models.VeiculoModel", "Veiculo")
+                    b.HasOne("estacionamentoApp.Models.VeiculoModel", "veiculo")
                         .WithMany()
-                        .HasForeignKey("VeiculoId")
+                        .HasForeignKey("veiculoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Estacionamento");
+                    b.Navigation("estacionamento");
 
-                    b.Navigation("Veiculo");
+                    b.Navigation("veiculo");
                 });
 
             modelBuilder.Entity("estacionamentoApp.Models.VeiculoModel", b =>

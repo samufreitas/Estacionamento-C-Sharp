@@ -1,0 +1,49 @@
+﻿@using estacionamentoApp
+@model EstacionamentoModel
+
+@{
+    ViewData["title"] = "Cadastrar estacionamento";
+}
+<!--Parte que exibe as mensagens das operações realizadas-->
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-light" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-light" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+<div class="container p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h2>Cadastro de estacionamento</h2>
+    </div>
+
+    <form method="post" asp-controller="Estacionamento" asp-action="Cadastrar">
+
+        <div class="mb-3">
+            <label for="Nome" class="form-label text-black">Nome:</label>
+            <input type="text" class="form-control" id="Nome" asp-for="Nome" placeholder="Informe o nome do estacionamento">
+            <span class="text-danger" asp-validation-for="Nome"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="FilialId" class="form-label text-black">Filial:</label>
+            <select class="form-control" id="FilialId" asp-for="FilialId" asp-items="@(new SelectList(ViewBag.Filiais, "Id", "Nome"))">
+                <option value="">Selecione uma filial</option>
+            </select>
+            <span class="text-danger" asp-validation-for="FilialId"></span>
+        </div>
+
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50"><i class="bi bi-save mx-2"></i>Salvar</button>
+            <a class="btn btn-primary w-50" asp-controller="Estacionamento" asp-action="Index"><i class="bi bi-arrow-left-square mx-2"></i>Voltar</a>
+        </div>
+    </form>
+
+</div>

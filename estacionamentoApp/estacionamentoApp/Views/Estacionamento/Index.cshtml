@@ -1,12 +1,13 @@
-﻿@using estacionamentoApp.Models
+﻿﻿@using estacionamentoApp.Models
 @model IEnumerable<EstacionamentoModel>
-@{
-    ViewData["Title"] = "Home Page";
-}
 
+@{
+    ViewData["title"] = "Estacionamentos";
+}
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-5">
-        <h2>Estacionamentos</h2>
+        <h2>Lista de estacionamentos</h2>
+        <a class="btn btn-success mx-2" asp-controller="Estacionamento" asp-action="Cadastrar"><i class="bi bi-plus-square mx-2"></i>Adiconar estacionamento</a>
     </div>
 
     <!--Parte que exibe as mensagens das operações realizadas-->
@@ -25,6 +26,7 @@
     <table id="Clientes" class="table table-light table-hover mt-5">
         <thead>
             <tr>
+                <th scope="col" class="text-center">Id</th>
                 <th scope="col" class="text-center">Nome estacionamento</th>
                 <th scope="col" class="text-center">Filial</th>
                 <th scope="col" class="text-center">Ações</th>
@@ -37,10 +39,15 @@
                 @foreach (var estacionamentos in Model)
                 {
                     <tr>
+                        <td scope="row" class="text-center">@estacionamentos.Id</td>
                         <td class="text-center">@estacionamentos.Nome</td>
                         <td class="text-center">@estacionamentos.Filial?.Nome</td>
                         <td class="text-center">
-                            <a asp-controller="VeiculoEstacionamento" asp-action="Index" asp-route-id="@estacionamentos.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Registros</a>
+                            <a asp-controller="Estacionamento" asp-action="Editar" asp-route-id="@estacionamentos.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+
+                            <a href="@Url.Action("Excluir", "Estacionamento", new { id = @estacionamentos.Id })"
+                               onclick="return confirmarExclusao();"
+                               class="btn btn-danger"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
                         </td>
                     </tr>
                 }
@@ -48,3 +55,8 @@
         </tbody>
     </table>
 </div>
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja excluir este Estacionamento?");
+    }
+</script>

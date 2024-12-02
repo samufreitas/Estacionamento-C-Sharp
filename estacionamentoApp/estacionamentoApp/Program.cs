@@ -2,7 +2,9 @@ using estacionamentoApp.Data;
 using estacionamentoApp.Services.ClienteService;
 using estacionamentoApp.Services.EmpresaService;
 using estacionamentoApp.Services.EnderecoService;
+using estacionamentoApp.Services.Estacionamento;
 using estacionamentoApp.Services.FilialService;
+using estacionamentoApp.Services.VeiculoEstacionamentoService;
 using estacionamentoApp.Services.VeiculoService;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,8 @@ builder.Services.AddScoped<IVeiculoInterface, VeiculoService>();
 builder.Services.AddScoped<IEmpresaInterface, EmpresaService>();
 builder.Services.AddScoped<IFilialInterface, FilialService>();
 builder.Services.AddScoped<IEnderecoInterface, EnderecoService>();
+builder.Services.AddScoped<IEstacionamentoInterface, EstacionamentoService>();
+builder.Services.AddScoped<IVeiculoEstacionamentoInterface, VeiculoEstacionamentoService>();
 
 
 
